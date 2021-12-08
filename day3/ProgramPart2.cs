@@ -11,15 +11,15 @@ namespace AdventOfCode
 			var lines = System.IO.File.ReadAllLines(@"C:/aoc_day3.txt");
 
 			var column = 0;
-            var startWithOne = new List<string>();
-            var startWithZero = new List<string>();
+            		var startWithOne = new List<string>();
+            		var startWithZero = new List<string>();
 			var numberOfBits = lines[0].Length;
 
-            foreach (string line in lines)
-            {
-                if (line[column] == '1') startWithOne.Add(line);
-                else startWithZero.Add(line);
-            }
+		    	foreach (string line in lines)
+		    	{
+				if (line[column] == '1') startWithOne.Add(line);
+				else startWithZero.Add(line);
+		    	}
 
 			string calculateOx;
 			string calculateScrubber;
@@ -40,20 +40,20 @@ namespace AdventOfCode
 		{         
 			while (lines.Count() > 1) {
 
-                var startsWithZeroCount = 0;
-                var startsWithOneCount = 0;
+                		var startsWithZeroCount = 0;
+                		var startsWithOneCount = 0;
 
-                foreach (string line in lines)
-                {
-                    if (line[column] == '0') startsWithZeroCount++;
-                    else startsWithOneCount++;
-                }
+				foreach (string line in lines)
+				{
+				    if (line[column] == '0') startsWithZeroCount++;
+				    else startsWithOneCount++;
+				}
 
 				if (startsWithZeroCount <= startsWithOneCount) lines = lines.Where(l => l[column] == '0').ToList();
 				else lines = lines.Where(l => l[column] == '1').ToList();
 
-                column++;
-            } 
+                		column++;
+            		} 
 			return lines.First();
 		}
 
@@ -63,10 +63,10 @@ namespace AdventOfCode
 				var startsWithZeroCount = 0;
 				var startsWithOneCount = 0;
 				foreach (string line in lines)
-                {
+                		{
 					if (line[column] == '0') startsWithZeroCount++;
 					else startsWithOneCount++;
-                }
+                		}
                 
 				if (startsWithZeroCount > startsWithOneCount) lines = lines.Where(l => l[column] == '0').ToList();
 				else lines = lines.Where(l => l[column] == '1').ToList();
