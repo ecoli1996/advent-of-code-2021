@@ -50,12 +50,12 @@ namespace AdventOfCode
             for (int i = 1; i <= numberOfPlayers; i++)
             {
                 var currentRow = 1;
-				        var playerValues = allPlayersBoards_Columns[i];
+				var playerValues = allPlayersBoards_Columns[i];
                 var numberOfValues = playerValues.Count;
                 for (int j = 1; j <= numberOfValues; j++)
                 {
-					        playerValues[currentRow] = playerValues[currentRow].Where(n => n != numberToRemove).ToList();
-					        if (playerValues[currentRow].Count == 0)
+					playerValues[currentRow] = playerValues[currentRow].Where(n => n != numberToRemove).ToList();
+					if (playerValues[currentRow].Count == 0)
                     {
                         winningPlayer = true;
                         break;
@@ -75,17 +75,17 @@ namespace AdventOfCode
 			for (int i = 1; i <= numberOfPlayers; i++)
             {
                 var currentRow = 1;
-				        var playerValues = allPlayersBoards_Rows[i];
-				        var numberOfValues = playerValues.Count;
-				        for (int j = 1; j <= numberOfValues; j++)
+				var playerValues = allPlayersBoards_Rows[i];
+				var numberOfValues = playerValues.Count;
+				for (int j = 1; j <= numberOfValues; j++)
                 {
-                  playerValues[currentRow] = playerValues[currentRow].Where(n => n != numberToRemove && !string.IsNullOrWhiteSpace(n)).ToArray();
-                  if (playerValues[currentRow].Length == 0)
-                  {
-                    winningPlayer = true;
-                    break;
-                  }
-                  currentRow++;
+					playerValues[currentRow] = playerValues[currentRow].Where(n => n != numberToRemove && !string.IsNullOrWhiteSpace(n)).ToArray();
+					if (playerValues[currentRow].Length == 0)
+					{
+						winningPlayer = true;
+						break;
+					}
+					currentRow++;
                 }
 
                 if (winningPlayer) return CalculateSumOfBoard(playerValues);
@@ -151,31 +151,31 @@ namespace AdventOfCode
 
             for (int i = 2; i < lines.Length; i++)
             {
-				        var line = lines[i];
+				var line = lines[i];
                 var columnNumber = 1;
 
                 // if line is empty we have begun a new players board
                 if (string.IsNullOrWhiteSpace(line))
                 {
-					          allPlayersBoards_Columns.Add(playerNumber, currentPlayersBoard);
+					allPlayersBoards_Columns.Add(playerNumber, currentPlayersBoard);
                     currentPlayersBoard = new Dictionary<int, List<string>>();
                     playerNumber++;
                 }
                 else
                 {
-                  var row = line.Split();
-                  foreach (string number in row) {
-                    if (!string.IsNullOrEmpty(number)) {
+					var row = line.Split();
+					foreach (string number in row) {
+						if (!string.IsNullOrEmpty(number)) {
                             if (currentPlayersBoard.ContainsKey(columnNumber)) currentPlayersBoard[columnNumber].Add(number);
                             else currentPlayersBoard.Add(columnNumber, new List<string> { number });
                             columnNumber++;
-						        }
-					        }
+						}
+					}
                 }
             }
 
-			    allPlayersBoards_Columns.Add(playerNumber, currentPlayersBoard);
-			    return allPlayersBoards_Columns;
+			allPlayersBoards_Columns.Add(playerNumber, currentPlayersBoard);
+			return allPlayersBoards_Columns;
         }
 	}
 }
