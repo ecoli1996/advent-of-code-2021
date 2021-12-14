@@ -48,7 +48,7 @@ namespace AdventOfCode
 				var four = FindUniqueLengthElement(currentInputs, 4);
 				knownConfigurations.Add(four, '4');
 
-                var one = FindUniqueLengthElement(currentInputs, 1);
+                		var one = FindUniqueLengthElement(currentInputs, 1);
 				knownConfigurations.Add(one, '1');
 
 				var two = FindTwo(currentInputs, knownCharPositions, one);
@@ -123,15 +123,15 @@ namespace AdventOfCode
 			while (!foundFive || !foundSix) {
 				var input = currentInputs[i];
 				if (!foundFive && input.Length == countOfFive && input.IndexOf(rightUp) == -1)
-                {
+                		{
 					foundFive = true;
 					five = input;
-                }
+                		}
 				if (!foundSix && input.Length == countOfSix && input.IndexOf(rightUp) == -1)
-                {
+                		{
 					foundSix = true;
 					six = input;
-                }
+                		}
 				i++;
 			}
 
@@ -159,26 +159,26 @@ namespace AdventOfCode
 			foreach (string input in currentInputs) {
 				var chars = input.ToCharArray();
 
-                if (chars.Contains('a')) aIn += 1;
-                else notInA.Add(input, true);
+                		if (chars.Contains('a')) aIn += 1;
+                		else notInA.Add(input, true);
 
-                if (chars.Contains('b')) bIn += 1;
+                		if (chars.Contains('b')) bIn += 1;
 				else notInB.Add(input, true);
 
-                if (chars.Contains('c')) cIn += 1;
-                else notInC.Add(input, true);
+				if (chars.Contains('c')) cIn += 1;
+				else notInC.Add(input, true);
 
-                if (chars.Contains('d')) dIn += 1;
-                else notInD.Add(input, true);
+				if (chars.Contains('d')) dIn += 1;
+				else notInD.Add(input, true);
 
-                if (chars.Contains('e')) eIn += 1;
-                else notInE.Add(input, true);
+				if (chars.Contains('e')) eIn += 1;
+				else notInE.Add(input, true);
 
-                if (chars.Contains('f')) fIn += 1;
-                else notInF.Add(input, true);
+				if (chars.Contains('f')) fIn += 1;
+				else notInF.Add(input, true);
 
-                if (chars.Contains('g')) gIn += 1;
-                else notInG.Add(input, true);           
+				if (chars.Contains('g')) gIn += 1;
+				else notInG.Add(input, true);           
 			}
          
 			if (aIn == 9)
@@ -190,7 +190,7 @@ namespace AdventOfCode
 			}
 			else if (bIn == 9)
 			{            
-                var oneExceptB = one.Except(new[] { 'b' }).Single();
+                		var oneExceptB = one.Except(new[] { 'b' }).Single();
 				knownCharPositions.Add(Position.RightUp, oneExceptB);
 
 				return notInB.Single().Key;
@@ -205,7 +205,7 @@ namespace AdventOfCode
 			}
 			else if (dIn == 9)
 			{            
-                var oneExceptD = one.Except(new[] { 'd' }).Single();
+                		var oneExceptD = one.Except(new[] { 'd' }).Single();
 				knownCharPositions.Add(Position.RightUp, oneExceptD);
 
 				return notInD.Single().Key;
@@ -213,7 +213,7 @@ namespace AdventOfCode
 			}
 			else if (eIn == 9)
 			{            
-                var oneExceptE = one.Except(new[] { 'e' }).Single();
+                		var oneExceptE = one.Except(new[] { 'e' }).Single();
 				knownCharPositions.Add(Position.RightUp, oneExceptE);
 
 				return notInE.Single().Key;
@@ -221,7 +221,7 @@ namespace AdventOfCode
 			}
 			else if (fIn == 9)
 			{
-                var oneExceptF = one.Except(new[] { 'f' }).Single();
+                		var oneExceptF = one.Except(new[] { 'f' }).Single();
 				knownCharPositions.Add(Position.RightUp, oneExceptF);
 
 				return notInF.Single().Key;
@@ -229,8 +229,8 @@ namespace AdventOfCode
 			} 
 			else
 			{
-                var oneExceptG = one.Except(new[] { 'g' }).Single();
-                knownCharPositions.Add(Position.RightUp, oneExceptG);
+                		var oneExceptG = one.Except(new[] { 'g' }).Single();
+                		knownCharPositions.Add(Position.RightUp, oneExceptG);
 
 				return notInG.Single().Key;
                 
@@ -240,27 +240,27 @@ namespace AdventOfCode
 		private static string FindUniqueLengthElement(string[] currentInputs, int number)
 		{
 			if (number == 8)
-            {
+            		{
 				return currentInputs.First(input => input.Length == 7);
-            }
-            else if (number == 7)
-            {
+            		}
+		    	else if (number == 7)
+		    	{
 				return currentInputs.First(input => input.Length == 3);
-            }
-            else if (number == 4)
-            {
+		    	}
+            		else if (number == 4)
+            		{
 				return currentInputs.First(input => input.Length == 4);
-            }
-            else if (number == 1)
-            {
+            		}
+            		else if (number == 1)
+            		{
 				return currentInputs.First(input => input.Length == 2);
-            }
+            		}
 
 			return string.Empty;
 		}
 
 		public enum Position {
-            RightUp,
+            		RightUp,
 		} 
 	}
 }
