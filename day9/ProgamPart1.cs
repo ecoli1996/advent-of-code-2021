@@ -12,9 +12,9 @@ namespace AdventOfCode
 
 		static void Main(string[] args)
 		{
-			var lines = System.IO.File.ReadAllLines(@"/Users/evc1996/Projects/AdventOfCode/AdventOfCode/aoc_day9.txt");
+			var lines = System.IO.File.ReadAllLines(@"C:/aoc_day9.txt");
             
-            // line #, list of smoke flow heights in that position
+            		// line #, list of smoke flow heights in that position
 			var heightMap = new Dictionary<int, char[]>();
 			var lineNumber = 1;
 			foreach (string line in lines)
@@ -31,7 +31,7 @@ namespace AdventOfCode
 			foreach (KeyValuePair<int, char[]> heights in heightMap)
 			{
 				var heightsValue = heights.Value;
-                var index = 0;
+                		var index = 0;
 				foreach(char height in heightsValue)
 				{
 					var currentHeight = Char.GetNumericValue(height);
@@ -46,7 +46,7 @@ namespace AdventOfCode
 					    (adjacentHeight_south == null || currentHeight < adjacentHeight_south)) {
 						lowestPoints.Add(currentHeight);
 					}
-                    index++;
+                    			index++;
 				}
 			}
 
@@ -61,21 +61,21 @@ namespace AdventOfCode
 		}
 
 		private static double? GetAdjacentLeft(char[] heights, int index)
-        {
+        	{
 			if (index > 0) return Char.GetNumericValue(heights[index - 1]);
-            return null;
-        }
+            		return null;
+        	}
 
 		private static double? GetAdjacentNorth(Dictionary<int, char[]> heightMap, int currentKey, int index)
-        {
+        	{
 			if (currentKey > 1) return Char.GetNumericValue(heightMap[currentKey - 1][index]);
-            return null;
-        }
+            		return null;
+        	}
 
 		private static double? GetAdjacentSouth(Dictionary<int, char[]> heightMap, int currentKey, int index)
-        {
+        	{
 			if (currentKey < ROW_COUNT) return Char.GetNumericValue(heightMap[currentKey + 1][index]);
 			return null;
-        }
+        	}
 	}
 }
