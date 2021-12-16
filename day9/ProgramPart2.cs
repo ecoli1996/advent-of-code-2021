@@ -13,9 +13,9 @@ namespace AdventOfCode
 		{
 			var lines = System.IO.File.ReadAllLines(@"C:/aoc_day9.txt");
             
-            // line #, list of smoke flow heights in that position
+            		// line #, list of smoke flow heights in that position
 			var heightMap = new Dictionary<int, char[]>();
-            // line #, index, mapped
+            		// line #, index, mapped
 			var basinMap = new Dictionary<int, Dictionary<int, bool>>();
 			var lineNumber = 1;
 			foreach (string line in lines)
@@ -29,12 +29,12 @@ namespace AdventOfCode
 			ROW_COUNT = heightMap.Count;
 			MAX_INDEX = heightMap[1].Length - 1;
 
-            // coordinates of low points
+            		// coordinates of low points
 			var lowestPoints = new List<Tuple<int, int>>();
 			foreach (KeyValuePair<int, char[]> heights in heightMap)
 			{
 				var heightsValue = heights.Value;
-                var index = 0;
+                		var index = 0;
 				foreach(char height in heightsValue)
 				{
 					var currentHeight = Char.GetNumericValue(height);
@@ -49,7 +49,7 @@ namespace AdventOfCode
 					    (adjacentHeight_south == null || currentHeight < adjacentHeight_south)) {
 						lowestPoints.Add(new Tuple<int, int>(index, heights.Key));
 					}
-                    index++;
+                    			index++;
 				}
 			}
 
@@ -91,8 +91,8 @@ namespace AdventOfCode
 			var adjRight = GetAdjacentRight(heightMap[coordinate.Item2], coordinate.Item1);
 			var nextRight = coordinate.Item1 + 1;
          
-            while (adjRight != 9 && adjRight != null)
-            {
+            		while (adjRight != 9 && adjRight != null)
+            		{
 				if (!basinMap[coordinate.Item2][nextRight]) {
 					traversalCount++;
 					basinMap[coordinate.Item2][nextRight] = true;
@@ -100,13 +100,14 @@ namespace AdventOfCode
 				}
 
 				adjRight = GetAdjacentRight(heightMap[coordinate.Item2], nextRight);
-                nextRight++;
-            }
+                		nextRight++;
+            		}
 
 			var adjLeft = GetAdjacentLeft(heightMap[coordinate.Item2], coordinate.Item1);
 			var nextLeft = coordinate.Item1 - 1;
-            while (adjLeft != 9 && adjLeft != null)
-            {
+            		
+			while (adjLeft != 9 && adjLeft != null)
+            		{
 				if (!basinMap[coordinate.Item2][nextLeft]) {
 					traversalCount++;
 					basinMap[coordinate.Item2][nextLeft] = true;
@@ -114,13 +115,13 @@ namespace AdventOfCode
 				}
 
 				adjLeft = GetAdjacentLeft(heightMap[coordinate.Item2], nextLeft);
-                nextLeft--;
-            }
+                		nextLeft--;
+            		}
 
 			var adjNorth = GetAdjacentNorth(heightMap, coordinate.Item2, coordinate.Item1);
 			var nextNorth = coordinate.Item2 - 1;
-            while (adjNorth != 9 && adjNorth != null)
-            {
+            		while (adjNorth != 9 && adjNorth != null)
+            		{
 				if (!basinMap[nextNorth][coordinate.Item1]) {
 					traversalCount++;
 					basinMap[nextNorth][coordinate.Item1] = true;
@@ -128,13 +129,13 @@ namespace AdventOfCode
 				}
 
 				adjNorth = GetAdjacentNorth(heightMap, nextNorth, coordinate.Item1);
-                nextNorth--;
-            }
+                		nextNorth--;
+            		}		
 
 			var adjSouth = GetAdjacentSouth(heightMap, coordinate.Item2, coordinate.Item1);
 			var nextSouth = coordinate.Item2 + 1;
 			while (adjSouth != 9 && adjSouth != null)
-            {
+            		{
 				if (!basinMap[nextSouth][coordinate.Item1]) {               
 					traversalCount++;
 					basinMap[nextSouth][coordinate.Item1] = true;
@@ -142,8 +143,8 @@ namespace AdventOfCode
 				}
 
 				adjSouth = GetAdjacentSouth(heightMap, nextSouth, coordinate.Item1);
-                nextSouth++;
-            }
+                		nextSouth++;
+            		}
 
 			if (basinsToTraverse.Count == 0) {
 				return traversalCount;
@@ -163,21 +164,21 @@ namespace AdventOfCode
 		}
 
 		private static double? GetAdjacentLeft(char[] heights, int index)
-        {
+        	{
 			if (index > 0) return Char.GetNumericValue(heights[index - 1]);
-            return null;
-        }
+            		return null;
+        	}
 
 		private static double? GetAdjacentNorth(Dictionary<int, char[]> heightMap, int currentKey, int index)
-        {
+        	{
 			if (currentKey > 1) return Char.GetNumericValue(heightMap[currentKey - 1][index]);
-            return null;
-        }
+            		return null;
+        	}
 
 		private static double? GetAdjacentSouth(Dictionary<int, char[]> heightMap, int currentKey, int index)
-        {
+        	{
 			if (currentKey < ROW_COUNT) return Char.GetNumericValue(heightMap[currentKey + 1][index]);
 			return null;
-        }
+        	}
 	}
 }
