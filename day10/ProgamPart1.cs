@@ -19,20 +19,20 @@ namespace AdventOfCode
 				while (keepSearching) {
 					keepSearching = false;
 					for (int bracketIndex = 0; bracketIndex < line.Length - 1; bracketIndex++)
-                    {
+                    			{
 						var char1 = line[bracketIndex];
 						var char2 = line[bracketIndex + 1];
 
-                        if ((char1 == '(' && char2 == ')') ||
-                            (char1 == '{' && char2 == '}') ||
-                            (char1 == '[' && char2 == ']') ||
-                            (char1 == '<' && char2 == '>'))
-                        {
+						if ((char1 == '(' && char2 == ')') ||
+						    (char1 == '{' && char2 == '}') ||
+						    (char1 == '[' && char2 == ']') ||
+						    (char1 == '<' && char2 == '>'))
+						{
 							line = line.Remove(bracketIndex, 2);
 							keepSearching = true;
 							break;
-                        }                  
-                    }
+						}                  
+					 }
 				}
 
 				foreach (char bracket in line)
