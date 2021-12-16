@@ -19,20 +19,20 @@ namespace AdventOfCode
 				while (keepSearching) {
 					keepSearching = false;
 					for (int bracketIndex = 0; bracketIndex < line.Length - 1; bracketIndex++)
-          {
-            var char1 = line[bracketIndex];
+					{
+					    	var char1 = line[bracketIndex];
 						var char2 = line[bracketIndex + 1];
             
-            if ((char1 == '(' && char2 == ')') ||
-                (char1 == '{' && char2 == '}') ||
-                (char1 == '[' && char2 == ']') ||
-                (char1 == '<' && char2 == '>'))
-                {
-                  line = line.Remove(bracketIndex, 2);
-							    keepSearching = true;
-							    break;
-                }
-          }
+					    	if ((char1 == '(' && char2 == ')') ||
+							(char1 == '{' && char2 == '}') ||
+							(char1 == '[' && char2 == ']') ||
+							(char1 == '<' && char2 == '>'))
+						{
+						  	line = line.Remove(bracketIndex, 2);
+							keepSearching = true;
+							break;
+                				}
+          				}
 				}
 
 				ulong autocompleteScore = 0;
@@ -40,29 +40,30 @@ namespace AdventOfCode
 
 				if (!syntaxErrorFound) {
 					for (int bracketIndex = line.Length - 1; bracketIndex >= 0; bracketIndex--)
-          {
-						  if (line[bracketIndex] == '(')
-              {
-                autocompleteScore *= 5;
-                autocompleteScore += 1;
-              }
-              else if (line[bracketIndex] == '[')
-              {
-                autocompleteScore *= 5;
-                autocompleteScore += 2;
-              }
-              else if (line[bracketIndex] == '{')
-              {
-                autocompleteScore *= 5;
-                autocompleteScore += 3;
-              }
-              else if (line[bracketIndex] == '<')
-              {
-                autocompleteScore *= 5;
-                autocompleteScore += 4;
-              }
-          }
-          Console.WriteLine($"Autocomplete score: {autocompleteScore}");
+				  	{
+						if (line[bracketIndex] == '(')
+				      		{
+							autocompleteScore *= 5;
+							autocompleteScore += 1;
+				      		}
+					      	else if (line[bracketIndex] == '[')
+					      	{
+							autocompleteScore *= 5;
+							autocompleteScore += 2;
+					      	}
+				      		else if (line[bracketIndex] == '{')
+				      		{
+							autocompleteScore *= 5;
+							autocompleteScore += 3;
+				      		}
+				      		else if (line[bracketIndex] == '<')
+				      		{
+							autocompleteScore *= 5;
+							autocompleteScore += 4;
+				      		}
+				  	}
+					
+          				Console.WriteLine($"Autocomplete score: {autocompleteScore}");
 					allScores.Add(autocompleteScore, allScores.Count);
 				}
 			}
