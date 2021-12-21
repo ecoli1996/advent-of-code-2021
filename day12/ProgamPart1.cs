@@ -40,7 +40,7 @@ namespace AdventOfCode
 				else if (node2End)
 				{
 					if (nodeConnections.ContainsKey(node1)) nodeConnections[node1].Ends = true;
-                    else nodeConnections.Add(node1, new NodeInfo { Children = new List<string>(), Ends = true });
+                    			else nodeConnections.Add(node1, new NodeInfo { Children = new List<string>(), Ends = true });
 				}
 				else
 				{
@@ -48,7 +48,7 @@ namespace AdventOfCode
 					else nodeConnections.Add(node1, new NodeInfo { Children = new List<string> { node2 }, Ends = false });
 
 					if (nodeConnections.ContainsKey(node2)) nodeConnections[node2].Children.Add(node1);
-                    else nodeConnections.Add(node2, new NodeInfo { Children = new List<string> { node1 }, Ends = false });
+                    			else nodeConnections.Add(node2, new NodeInfo { Children = new List<string> { node1 }, Ends = false });
 				}
 			}
 
