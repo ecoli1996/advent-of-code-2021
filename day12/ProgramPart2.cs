@@ -9,7 +9,7 @@ namespace AdventOfCode
 	{
 		static void Main(string[] args)
 		{
-			var lines = System.IO.File.ReadAllLines(@"/Users/evc1996/Projects/AdventOfCode/AdventOfCode/aoc_day12.txt");
+			var lines = System.IO.File.ReadAllLines(@"C:/aoc_day12.txt");
 			var nodeConnections = new Dictionary<string, NodeInfo> { { "start", new NodeInfo { Children = new List<string>(), Ends = false } } };
 
 
@@ -40,7 +40,7 @@ namespace AdventOfCode
 				else if (node2End)
 				{
 					if (nodeConnections.ContainsKey(node1)) nodeConnections[node1].Ends = true;
-                    else nodeConnections.Add(node1, new NodeInfo { Children = new List<string>(), Ends = true });
+                    			else nodeConnections.Add(node1, new NodeInfo { Children = new List<string>(), Ends = true });
 				}
 				else
 				{
@@ -48,7 +48,7 @@ namespace AdventOfCode
 					else nodeConnections.Add(node1, new NodeInfo { Children = new List<string> { node2 }, Ends = false });
 
 					if (nodeConnections.ContainsKey(node2)) nodeConnections[node2].Children.Add(node1);
-                    else nodeConnections.Add(node2, new NodeInfo { Children = new List<string> { node1 }, Ends = false });
+                    			else nodeConnections.Add(node2, new NodeInfo { Children = new List<string> { node1 }, Ends = false });
 				}
 			}
          
@@ -92,11 +92,11 @@ namespace AdventOfCode
 					{
 						if (!allowExtraSmallCaveVisit)
 						{
-                            continue;
+                            				continue;
 						}
 
-                        var currentPathCopy = currentPath.Select(x => x).ToList();
-                        BuildPaths(child, currentPathCopy, nodeConnections, paths, false);
+                        			var currentPathCopy = currentPath.Select(x => x).ToList();
+                        			BuildPaths(child, currentPathCopy, nodeConnections, paths, false);
 					}
 					else
 					{
